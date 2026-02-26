@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>EliteFit Gym</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+<h2>ELITEFIT</h2>
+
+<div>
+
+<a href="#plans">Plans</a>
+<a href="#trainers">Trainers</a>
+<a href="#bmi">BMI</a>
+
+</div>
+
+</nav>
+
+
+
+<section class="hero reveal">
+
+<h1>Elite Fitness Experience</h1>
+
+<p>Premium Gym Membership Platform</p>
+
+<button onclick="scrollPlans()">View Plans</button>
+
+</section>
+
+
+
+<section class="stats reveal">
+
+<div>
+
+<h2 id="members">0</h2>
+<p>Members</p>
+
+</div>
+
+
+<div>
+
+<h2 id="trainersNum">0</h2>
+<p>Trainers</p>
+
+</div>
+
+
+<div>
+
+<h2 id="years">0</h2>
+<p>Years</p>
+
+</div>
+
+
+</section>
+
+
+
+<section id="plans" class="plans reveal">
+
+<h1>Membership Plans</h1>
+
+
+<div class="cardWrap">
+
+
+<div class="card">
+
+<h2>Basic</h2>
+
+<h3>$19/mo</h3>
+
+<p>Gym Access</p>
+
+<p>Locker</p>
+
+<p>Cardio</p>
+
+<button onclick="window.location='payment.html?plan=Basic'">Join</button>
+
+</div>
+
+
+
+<div class="card premium">
+
+<h2>Premium</h2>
+
+<h3>$49/mo</h3>
+
+<p>Trainer</p>
+
+<p>Diet Plan</p>
+
+<p>Full Access</p>
+
+<button onclick="window.location='payment.html?plan=Premium'">Join</button>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>Elite</h2>
+
+<h3>$89/mo</h3>
+
+<p>Personal Trainer</p>
+
+<p>Priority Support</p>
+
+<p>All Access</p>
+
+<button onclick="window.location='payment.html?plan=Elite'">Join</button>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<section id="trainers" class="trainers reveal">
+
+
+<h1>Our Trainers</h1>
+
+
+<div class="trainerBox">
+
+
+<div class="trainer">
+
+<img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e">
+
+<h3>Mike</h3>
+
+<p>Strength Coach</p>
+
+</div>
+
+
+<div class="trainer">
+
+<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
+
+<h3>Emma</h3>
+
+<p>Fitness Trainer</p>
+
+</div>
+
+
+<div class="trainer">
+
+<img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b">
+
+<h3>John</h3>
+
+<p>Bodybuilding Coach</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<section id="bmi" class="bmi reveal">
+
+
+<h1>BMI Calculator</h1>
+
+
+<input id="h" placeholder="Height cm">
+
+<input id="w" placeholder="Weight kg">
+
+
+<button onclick="bmi()">Calculate</button>
+
+
+<h2 id="ans"></h2>
+
+
+</section>
+
+
+
+<footer>
+
+<h2>EliteFit Gym</h2>
+
+<p>Professional Gym Subscription Website</p>
+
+<p>
+
+Email:
+
+rananarendrasinh472@gmail.com
+
+</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

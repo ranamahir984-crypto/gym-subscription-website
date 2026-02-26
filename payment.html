@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Gym Payment</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav>
+
+<h2>ELITEFIT</h2>
+
+</nav>
+
+
+<section class="payment">
+
+<div class="paymentBox">
+
+<h1>Membership Payment</h1>
+
+<h2 id="planName"></h2>
+
+<input placeholder="Full Name">
+
+<input id="cardNumber" placeholder="Card Number" maxlength="19" minlength="16">
+
+<p id="cardtype"></p>
+
+<input id="expiry" placeholder="Expiry Date(MM/YY)" maxlength="5">
+
+<input id="cvv" placeholder="CVV" maxlength="3">
+
+<p id="errorMsg" style="color:red;"></p>
+
+<button onclick="pay()">Pay Now</button>
+
+</div>
+
+</section>
+
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+let plan = params.get("plan");
+
+document.getElementById("planName").innerHTML =
+plan + " Plan";
+
+function pay(){
+
+let inputs=document.querySelectorAll("input")
+
+let name=inputs[0]
+let card=inputs[1]
+let date=inputs[2]
+let cvv=inputs[3]
+
+let error=document.getElementById("errorMsg")
+
+error.innerHTML=""
+
+name.style.border=""
+card.style.border=""
+date.style.border=""
+cvv.style.border=""
+
+
+if(name.value==""){
+
+error.innerHTML="Enter your name"
+
+name.style.border="2px solid red"
+
+return
+
+}
+
+
+if(card.value.length!=16 || isNaN(card.value)){
+
+error.innerHTML="Card number must be 16 digits"
+
+card.style.border="2px solid red"
+
+return
+
+}
+
+
+let datePattern=/^(0[1-9]|1[0-2])\/\d{2}$/
+
+if(!datePattern.test(date.value)){
+
+error.innerHTML="Use format MM/YY"
+
+date.style.border="2px solid red"
+
+return
+
+}
+
+
+if(cvv.value.length!=3 || isNaN(cvv.value)){
+
+error.innerHTML="CVV must be 3 digits"
+
+cvv.style.border="2px solid red"
+
+return
+
+}
+
+
+
+let btn=document.querySelector("button")
+
+btn.innerHTML="Processing..."
+
+
+setTimeout(function(){
+
+window.location="thankyou.html"
+
+},1500)
+
+
+}
+
+let expiry = document.getElementById("expiry");
+
+expiry.addEventListener("input", function() {
+
+let value = this.value.replace(/\D/g,'');
+
+if(value.length > 4){
+value = value.substring(0,4);
+}
+
+// Month Auto Fix
+if(value.length >= 2){
+
+let month = value.substring(0,2);
+
+if(month > 12){
+month = "12";
+}
+
+if(month == "00"){
+month = "01";
+}
+
+value = month + value.substring(2);
+
+}
+
+// Auto Slash
+if(value.length > 2){
+value = value.substring(0,2) + "/" + value.substring(2);
+}
+
+this.value = value;
+
+});
+
+
+
+</script>
+
+<script id="cardSpacing">
+
+let cardInput=document.getElementById("cardNumber")
+
+cardInput.addEventListener("input",function(){
+
+let value=this.value.replace(/\D/g,'')
+
+value=value.substring(0,16)
+
+value=value.replace(/(.{4})/g,"$1 ")
+
+this.value=value.trim()
+
+})
+
+</script>
+
+<script id="cvvOnly">
+
+let cvvInput=document.getElementById("cvv")
+
+cvvInput.addEventListener("input",function(){
+
+this.value=this.value.replace(/\D/g,'')
+
+})
+
+</script>
+
+<script id="cardTypeDetect">
+
+cardInput.addEventListener("input",function(){
+
+let num=this.value.replace(/\s/g,'')
+
+let type=document.getElementById("cardType")
+
+if(num.startsWith("4")){
+
+type.innerHTML="Visa Card"
+
+type.style.color="cyan"
+
+}
+
+else if(num.startsWith("5")){
+
+type.innerHTML="MasterCard"
+
+type.style.color="orange"
+
+}
+
+else{
+
+type.innerHTML=""
+
+}
+
+})
+
+</script>
+
+</body>
+
+</html>
