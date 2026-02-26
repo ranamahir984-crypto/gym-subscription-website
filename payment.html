@@ -88,17 +88,6 @@ return
 }
 
 
-if(card.value.length!=16 || isNaN(card.value)){
-
-error.innerHTML="Card number must be 16 digits"
-
-card.style.border="2px solid red"
-
-return
-
-}
-
-
 let datePattern=/^(0[1-9]|1[0-2])\/\d{2}$/
 
 if(!datePattern.test(date.value)){
@@ -243,5 +232,6 @@ type.innerHTML=""
 </script>
 
 </body>
+
 
 </html>
